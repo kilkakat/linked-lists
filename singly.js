@@ -1,31 +1,28 @@
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
+function append (element) {
+    const node = {
+        element,
+        next: null,
+};
+
+let head;
+if (head === null) {
+    head = node;
+} else {
+    let current = head;
+
+    while (current.next !== null) {
+        current = current.next;
     }
+
+    current.next = node;
 }
 
-class LinkedList {
-    constructor() {
-        this.head = null;
-    }
-
-    append(data) {
-        const newNode = new Node(data);
-        if (!this.head) {
-            this.head = newNode;
-            return;
-        }
-        let current = this.head;
-        while (current.next) {
-            current = current.next;
-        }
-        current.next = newNode;
-    }
+    length++;
 }
 
-// Example usage:
-const linkedList = new LinkedList();
+const linkedList = append();
 linkedList.append(1);
-linkedList.append(2);
-linkedList.append(3);
+linkedList.append(10);
+linkedList.append(-1);
+linkedList.append(40);
+linkedList.append(-123);
