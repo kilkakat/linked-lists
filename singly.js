@@ -17,6 +17,13 @@ class LinkedList {
         this.last = newNode;
     }
 
+    pushFront(data) {
+
+        const newNode = new Node(data); 
+        newNode.next = this.first;
+        this.first = newNode;
+    }
+
     print() {
         let curr = this.first;
         while (curr != null) {
@@ -35,8 +42,8 @@ class Node {
 }
 
 let list = new LinkedList();
-list.pushBack(1);
-list.pushBack(2);
-list.pushBack(3);
+list.pushFront(1);
+list.pushFront(2);
+list.pushFront(3);
 
 list.print();
