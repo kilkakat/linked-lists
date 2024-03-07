@@ -1,28 +1,42 @@
-function append (element) {
-    const node = {
-        element,
-        next: null,
-};
-
-let head;
-if (head === null) {
-    head = node;
-} else {
-    let current = head;
-
-    while (current.next !== null) {
-        current = current.next;
+class LinkedList {
+    constructor () {
+    this.first = null;
+    this.last = null;
     }
 
-    current.next = node;
+    pushBack(data) {
+
+        const newNode = new Node(data);
+        if (!this.first) {
+            this.first = newNode;
+            this.last = newNode;
+            return;
+        }
+        
+        this.last.next = newNode;
+        this.last = newNode;
+    }
+
+    print() {
+        let curr = this.first;
+        while (curr != null) {
+            console.log(curr.data);
+            curr = curr.next
+        }
+    }
 }
 
-    length++;
+
+class Node {
+    constructor (data) {
+        this.data = data;
+        this.next = null;
+    } 
 }
 
-const linkedList = append();
-linkedList.append(1);
-linkedList.append(10);
-linkedList.append(-1);
-linkedList.append(40);
-linkedList.append(-123);
+let list = new LinkedList();
+list.pushBack(1);
+list.pushBack(2);
+list.pushBack(3);
+
+list.print();
