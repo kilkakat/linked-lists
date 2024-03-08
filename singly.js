@@ -4,6 +4,8 @@ class LinkedList {
     this.last = null;
     }
 
+
+
     pushBack(data) {
 
         const newNode = new Node(data);
@@ -17,12 +19,33 @@ class LinkedList {
         this.last = newNode;
     }
 
+
+
     pushFront(data) {
 
         const newNode = new Node(data); 
         newNode.next = this.first;
         this.first = newNode;
     }
+
+    
+    
+    // find node by data
+    findNode(data) {
+
+        let curr = this.first;
+        while (curr) {
+
+            if (curr.data == data) {
+                return curr;
+            }
+            curr = curr.next;
+
+        }
+        return null;
+    }
+
+
 
     print() {
         let curr = this.first;
@@ -34,6 +57,7 @@ class LinkedList {
 }
 
 
+
 class Node {
     constructor (data) {
         this.data = data;
@@ -41,9 +65,14 @@ class Node {
     } 
 }
 
-let list = new LinkedList();
-list.pushFront(1);
-list.pushFront(2);
-list.pushFront(3);
 
-list.print();
+
+let list = new LinkedList();
+
+list.pushBack(1);
+list.pushBack(4);
+list.pushBack(2);
+
+// list.print();
+const find = list.findNode(1);
+console.log(find);
