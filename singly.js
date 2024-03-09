@@ -47,6 +47,29 @@ class LinkedList {
 
 
 
+    // insert data after this node
+    insertAfter(node, data) {
+
+        let newNode = new Node(data); 
+
+        if (this.first == this.last) {
+            this.last.next = newNode;
+            this.last = newNode;
+            return;
+        }
+
+        if (this.first == null) {
+            this.first = newNode;
+            this.last = newNode;
+            return;
+        } 
+
+        newNode.next = node.next;
+        node.next = newNode;
+    }
+
+
+
     print() {
         let curr = this.first;
         while (curr != null) {
@@ -73,6 +96,10 @@ list.pushBack(1);
 list.pushBack(4);
 list.pushBack(2);
 
-// list.print();
-const find = list.findNode(1);
-console.log(find);
+list.insertAfter(list.findNode(4), 6);
+
+list.print();
+
+// const find = list.findNode(1);
+// console.log(find);
+
