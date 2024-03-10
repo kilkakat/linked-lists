@@ -68,6 +68,33 @@ class LinkedList {
         node.next = newNode;
     }
 
+    // insert data before this node
+    insertBefore(node, data) {
+
+        let newNode = new Node(data); 
+        let curr = this.first;
+
+        if (this.first == this.last) {
+            
+            this.first = newNode;
+            newNode.next = this.last;
+            return;
+        }
+
+        if (this.first == node) {
+            this.first = newNode;
+            newNode.next = node;
+            return;
+        }
+        
+        while (curr.next !== node) {
+        curr = curr.next;
+        }
+
+        curr.next = newNode;
+        newNode.next = node;
+    }
+
 
 
     print() {
@@ -95,9 +122,9 @@ let list = new LinkedList();
 list.pushBack(1);
 list.pushBack(4);
 list.pushBack(2);
+list.pushBack(3); 
 
-list.insertAfter(list.findNode(4), 6);
-
+list.insertBefore(list.findNode(2), 6);
 list.print();
 
 // const find = list.findNode(1);
